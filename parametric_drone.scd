@@ -14,8 +14,13 @@ s.boot
 Ndef(\x).playN([0,1])
 Ndef(\x1).playN([0,1])
 s.window.front
+
 Ndef(\x).set(\freq, 60,\freq1, 120, \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.40);
 Ndef(\x1).set(\freq, 121,\freq1, 60*(4/3), \amp,0.1, \mix, 0.5, \room, 0.020, \damp, 0.20)
+
+Ndef(\x).getKeysValues
+Ndef(\x).edit
+
 
 (
 w = Window().front;

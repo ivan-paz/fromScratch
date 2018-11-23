@@ -18,8 +18,34 @@ s.window.front
 Ndef(\x).set(\freq, 60,\freq1, 120, \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.40);
 Ndef(\x1).set(\freq, 121,\freq1, 60*(4/3), \amp,0.1, \mix, 0.5, \room, 0.020, \damp, 0.20)
 
-Ndef(\x).getKeysValues
+// to explore the space
 Ndef(\x).edit
+
+//save combinations
+~parameterCombinations = []
+(
+~save = {|class|
+	var values;
+	values = Ndef(\x).getKeysValues;
+	values = values.add(['class',class]);
+	~parameterCombinations = ~parameterCombinations.add(values);
+	~parameterCombinations.do{|x| x.postln}
+
+})
+~save.value(1)
+//write csv data
+(
+var location = "/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/";
+var filename = "parameterCombination";
+f = File(location ++ filename ++ ".csv","w");
+~parameterCombinations.writeArchive(location ++ filename);
+~parameterCombinations.do{arg x, i;
+	f.write(i + "," + x + "\n");
+};
+f.close
+)
+
+
 
 
 (

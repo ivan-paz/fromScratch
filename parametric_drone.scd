@@ -14,23 +14,31 @@ Ndef(\x1,{
 }))
 Ndef(\x).playN([0,1])
 Ndef(\x1).playN([0,1])
-s.window.front
+
 
 Ndef(\x).set(\freq, 60,\freq1, 120, \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.40);
 Ndef(\x1).set(\freq, 121,\freq1, 60*(4/3), \amp,0.1, \mix, 0.5, \room, 0.020, \damp, 0.20)
 
-// to explore the space
+//To explore the space
 Ndef(def(\x).edit
 Ndef(\x1).edit
 
-("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/lib").load;
 
+("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/lib.scd").load;
+
+//create a place to store the data
 ~data = [];
-~save.value();
-~set.value(\instrument,class)
+//save instrument parameters into 
+~save.value(Ndef(\x), 'A', ~data);
+
+~data.do{arg x; x.postln}
+//
+~set.value(Ndef(\x),'A',~data);
 
 
-
+~hardSave.value(~data,name)
+//display function arguments
+~save.argNames
 
 
 

@@ -26,12 +26,20 @@ Ndef(\x1).edit
 
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/lib.scd").load;
 
-//create a place to store the data
-~data = [];
-//save instrument parameters into 
+
+//select an existing seed OR create an empty place
+//~data.value(seed) -> seedbyname  or ~data.value() = new[]
+~data = ~seed.value('data')
+~data.do{|x| x.do{|y| y.do{|z| z.postln}}}
+
+//   use RuLer on the imported seed
+
+//save instrument parameters into
 ~save.value(Ndef(\x), 'A', ~data);
 
 ~data.do{arg x; x.postln}
+
+
 //
 ~set.value(Ndef(\x),'A',~data);
 

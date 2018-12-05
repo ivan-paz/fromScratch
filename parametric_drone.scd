@@ -31,7 +31,9 @@ Ndef(\x1).edit
 
 
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/lib.scd").load;
+("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rules.scd").load;
 
+~before
 
 //select an existing seed OR create an empty place
 //~data.value(seed) -> seedbyname  or ~data.value() = new[]

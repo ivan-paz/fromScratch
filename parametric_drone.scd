@@ -29,7 +29,6 @@ Ndef(\x1).set(\freq, 360.45,\freq1, 662.02, \amp,0.1, \mix, 10, \room, 0.4, \dam
 Ndef(\x).edit
 Ndef(\x1).edit
 
-
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/lib.scd").load;
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rules.scd").load;
 

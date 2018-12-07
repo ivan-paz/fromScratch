@@ -3,13 +3,13 @@ s.boot
 (Ndef(\x,{
 	arg freq, freq1, amp, mix, room, damp;
 	var sig;
-	sig = Saw.ar([freq, freq + 1, freq1, freq1 -1]);
+	sig = Saw.ar([freq, freq + 1, freq1, freq1 -1],amp);
 	sig = FreeVerb.ar(sig, SinOsc.kr(mix), SinOsc.kr(room), SinOsc.kr(damp));
 });
 Ndef(\x1,{
 	arg freq, freq1, amp, mix, room, damp;
 	var sig;
-	sig = Saw.ar([freq, freq + 1, freq1, freq1 - 1]) * LFNoise0.ar(5);
+	sig = Saw.ar([freq, freq + 1, freq1, freq1 - 1],amp) * LFNoise0.ar(5);
 	sig = FreeVerb.ar(sig, SinOsc.kr(mix), SinOsc.kr(room), SinOsc.kr(damp));
 }))
 Ndef(\x).playN([0,1])
@@ -17,7 +17,6 @@ Ndef(\x1).playN([0,1])
 
 Ndef(\x).set( \freq, 120,\freq1, 180,      \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.40);
 Ndef(\x1).set(\freq, 121,\freq1, 60*(4/3), \amp, 0.1, \mix, 0.5,  \room, 0.020, \damp, 0.20)
-
 
 Ndef(\x).set( \freq, 60, \freq1, 120,      \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.40);
 Ndef(\x1).set(\freq, 121,\freq1, 60*(4/3), \amp,0.1, \mix, 0.5, \room, 0.020,   \damp, 0.20)
@@ -31,12 +30,35 @@ Ndef(\x1).edit
 
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/lib.scd").load;
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rules.scd").load;
+~before.do{arg x; x.do{|y| y.postln}}
 
-~before.do{arg x; x.postln}
 
+(
 ~set = { |instrument, class, d|
-	var selectedCombination = []
-}
+	var rule, combination = [];
+	var keys;
+        rule = class[d].choose.postln;
+	(rule.size -1).do{arg parameter;
+	var value;
+	value = rule[parameter].choose;
+	combination = combination.add(value)
+};
+keys = instrument.getKeysValues;
+keys.collect{ |x,i|
+	//x.postln;
+	//i.postln;
+	//'combination'.post;combination[i].postln;
+	instrument.set(x[0],combination[i])
+};
+instrument.getKeysValues.postln;
+})
+~set.value(Ndef(\x),~before,1)
+~set.value(Ndef(\x1),~before,4)
+
+Ndef(\x).getKeysValues
+Ndef(\x).set(*~mapIndices.(~rule, x));
+
+
 
 //select an existing seed OR create an empty place
 //~data.value(seed) -> seedbyname  or ~data.value() = new[]

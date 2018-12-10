@@ -31,7 +31,7 @@ Ndef(\x1).set(\freq, 360.33,\freq1, 366.02, \amp,0.1, \mix, 10, \room, 0.4, \dam
 
 //before
 Ndef(\x).set( \freq, 120,\freq1, 180,      \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.40);
-Ndef(\x1).set(\freq, 121,\freq1, 60*(4/3), \amp, 0.1, \mix, 0.5,  \room, 0.020, \damp, 0.20);
+Ndef(\x1).set(\freq, 121,\freq1, 60*(4/3), \amp, 0.1, \mix, 0.01,  \room, 0.020, \damp, 0.20);
 Ndef(\x).set( \freq, 120,\freq1, 180,      \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.02);
 Ndef(\x1).set(\freq, 120,\freq1, 60*(4/3), \amp, 0.1, \mix, 0.01,  \room, 0.020, \damp, 0.02)
 Ndef(\x).set( \freq, 120*(4/3),\freq1, 180,      \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.02);

@@ -25,9 +25,15 @@ Ndef(\x).set( \freq, 80.48,\freq1, 80.86, \amp, 0.1, \mix, 0.06, \room, 0.02, \d
 
 //rain
 Ndef(\x).set( \freq, 80.48, \freq1, 80.86, \amp, 0.1, \mix, 0.06, \room, 0.02, \damp, 8);
+Ndef(\x).set( \freq, 120,\freq1, 180,      \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.40);
+
 Ndef(\x1).set(\freq, 882.66,\freq1, 662.02, \amp,0.1, \mix, 10, \room, 0.4, \damp, 4)
 Ndef(\x1).set(\freq, 441.33,\freq1, 662.02, \amp,0.1, \mix, 10, \room, 0.4, \damp, 16)
 Ndef(\x1).set(\freq, 360.33,\freq1, 366.02, \amp,0.1, \mix, 10, \room, 0.4, \damp, 16)
+
+Ndef(\x1).set(\freq, 480.33,\freq1, 366.02, \amp,0.1, \mix, 10, \room, 0.4, \damp, 16)
+Ndef(\x1).set(\freq, 463.33,\freq1, 366.02, \amp,0.1, \mix, 10, \room, 0.4, \damp, 16)
+
 
 //before
 Ndef(\x).set( \freq, 120,\freq1, 180,      \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.40);
@@ -49,7 +55,7 @@ Ndef(\x1).edit
 
 ~the = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rules.scd").load;
 
-~before.do{arg x; x.do{|y| y.postln}}
+~the.do{arg x; x.do{|y| y.postln}}
 
 
 (
@@ -71,7 +77,7 @@ keys.collect{ |x,i|
 };
 instrument.getKeysValues.postln;
 })
-~set.value(Ndef(\x),~before,1)
+~set.value(Ndef(\x),~the,5)
 ~set.value(Ndef(\x1),~before,4)
 
 Ndef(\x).getKeysValues

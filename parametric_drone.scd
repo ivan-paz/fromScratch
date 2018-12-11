@@ -53,7 +53,7 @@ Ndef(\x1).edit
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/lib.scd").load;
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rules.scd").load;
 
-~the = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rules.scd").load;
+~the = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rainX.scd").load;
 
 ~the.do{arg x; x.do{|y| y.postln}}
 
@@ -77,7 +77,8 @@ keys.collect{ |x,i|
 };
 instrument.getKeysValues.postln;
 })
-~set.value(Ndef(\x),~the,5)
+~set.value(Ndef(\x),~the,2)
+
 ~set.value(Ndef(\x1),~before,4)
 
 Ndef(\x).getKeysValues

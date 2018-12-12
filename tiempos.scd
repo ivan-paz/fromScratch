@@ -135,6 +135,49 @@ Ndef(\x5).set(\amp,0);
 Ndef(\x6).set(\amp,0);
 );
 //-------------------------------------------------------------------
+s.boot
+~intro = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/intro.scd").load
+~intro.keysValuesDo{|key| 'key : '.post;key.postln}
+~intro.at(1)
+(
+~set = { |instrument, class, d|
+	var rule;
+	var combination;
+	var keys;
+        class.at(d);
+	if(class.at(d)!=nil){
+	rule = class.at(d).choose.postln;
+	(rule.size -1).do{arg parameter;
+		var value;
+		value = rule[parameter].choose;
+		combination = combination.add(value);
+	}};
+	combination.postln;
+	
+	keys = instrument.getKeysValues;
+	keys.collect{ |x,i|
+		//x.postln;
+		//i.postln;
+		'combination'.post;combination[i].postln;
+		instrument.set(x[0],combination[i])
+	};
+	instrument.getKeysValues.postln;
+}
+)
+~set.value( Ndef(\x3), ~intro, 7)
+Ndef(\x3).set(\amp,0.5)
+Ndef(\x3).play([0,1])
+
+
+
+
+
+
+
+
+
+
+
 //    task
 
 (

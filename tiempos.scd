@@ -135,10 +135,32 @@ Ndef(\x5).set(\amp,0);
 Ndef(\x6).set(\amp,0);
 );
 //-------------------------------------------------------------------
+(
+Ndef(\x3,{
+	arg freqx3, freq2x3, ampx3, freqx4, widthx4, freq1x4, width1x4, ampx4, freqx5, freq2x5, ampx5, freqx6, widthx6, freq1x6, width1x6, ampx6;
+	var sigx3, sigx4, sigx5, sigx6;
+
+	sigx3 = Mix(Saw.ar([freqx3, freqx3 - 1], ampx3) + Saw.ar([freq2x3, freq2x3 - 1], ampx3)) + Impulse.ar(20, ampx3/4);
+	sigx3 = FreeVerb.ar(sigx3, 0.33, 0.5, 0.5, 1) * 3 * ampx3;
+
+	sigx4 = (Pulse.ar(freqx4, widthx4, ampx4) + Pulse.ar(freq1x4, width1x4, ampx4) );
+	sigx4 = FreeVerb.ar(sigx4, 0.33, 0.5, 0.5, 1 ) * 3 * ampx4;
+
+	sigx5 = Mix(Saw.ar([freqx5, freqx5 - 1], ampx5) + Saw.ar([freq2x5, freq2x5 - 1], ampx5)) + Impulse.ar(20, ampx5/4);
+	sigx5 = FreeVerb.ar(sigx5, 0.33, 0.5, 0.5, 1) * 3 * ampx5;
+
+	sigx6 = (Pulse.ar(freqx6, widthx6, ampx6) + Pulse.ar(freq1x6, width1x6, ampx6) );
+	sigx6 = FreeVerb.ar(sigx6, 0.33, 0.5, 0.5, 1 ) * 3 * ampx6;
+	
+	sigx3 + sigx4 + sigx5 + sigx6
+})
+)
+
 s.boot
 ~intro = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/intro.scd").load
-~intro.keysValuesDo{|key| 'key : '.post;key.postln}
+~intro.keysValuesDo{  |key|  key.postln }
 ~intro.at(1)
+~intro.at(0)
 (
 ~set = { |instrument, class, d|
 	var rule;
@@ -158,16 +180,15 @@ s.boot
 	keys.collect{ |x,i|
 		//x.postln;
 		//i.postln;
-		'combination'.post;combination[i].postln;
+		//'combination'.post;combination[i].postln;
 		instrument.set(x[0],combination[i])
 	};
 	instrument.getKeysValues.postln;
 }
 )
-~set.value( Ndef(\x3), ~intro, 7)
-Ndef(\x3).set(\amp,0.5)
+~set.value( Ndef(\x3), ~intro, 0)
 Ndef(\x3).play([0,1])
-
+Ndef(\x3).getKeysValues.do{|key| key.postln}
 
 
 

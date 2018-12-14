@@ -125,7 +125,7 @@ Tdef(\playkick,{
 //----------------------------------------------------------------------------------
 //     start Ndefs
 (
-Ndef(\x3).playN([0]);
+Ndef(\x3).playN([0,1]);
 Ndef(\x4).playN([1]);
 Ndef(\x5).playN([0]);
 Ndef(\x6).playN([1]);
@@ -134,9 +134,13 @@ Ndef(\x4).set(\amp,0);
 Ndef(\x5).set(\amp,0);
 Ndef(\x6).set(\amp,0);
 );
+~x3intro = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/x3intro.scd").load
+~set.value( Ndef(\x3), ~x3intro, 1)
+
+
 //-------------------------------------------------------------------
 (
-Ndef(\x3,{
+Ndef(\x2,{
 	arg freqx3, freq2x3, ampx3, freqx4, widthx4, freq1x4, width1x4, ampx4, freqx5, freq2x5, ampx5, freqx6, widthx6, freq1x6, width1x6, ampx6;
 	var sigx3, sigx4, sigx5, sigx6;
 
@@ -158,8 +162,12 @@ Ndef(\x3,{
 
 s.boot
 ~intro = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/intro.scd").load
-~intro.keysValuesDo{  |key|  key.postln }
-~intro.at(1)
+~main = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/main.scd").load
+~break = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/break.scd").load
+~end = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/end.scd").load
+(~read = { |class|
+class.keysValuesDo{  |key| '  --->  '.post; key.postln }
+})
 ~intro.at(0)
 (
 ~set = { |instrument, class, d|
@@ -186,11 +194,15 @@ s.boot
 	instrument.getKeysValues.postln;
 }
 )
-~set.value( Ndef(\x3), ~intro, 0)
-Ndef(\x3).play([0,1])
-Ndef(\x3).getKeysValues.do{|key| key.postln}
-
-
+~read.value(~intro)
+~set.value( Ndef(\x2), ~intro, 0)
+~set.value( Ndef(\x2), ~main, 12)
+~set.value( Ndef(\x2), ~break, 8)
+~set.value( Ndef(\x2), ~end, 0)
+Ndef(\x2).play([0,1])
+Ndef(\x2).getKeysValues.do{|key| key.postln}
+s.makeWindow
+"ls".unixCmd
 
 
 

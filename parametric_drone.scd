@@ -15,6 +15,9 @@ Ndef(\x1,{
 Ndef(\x).playN([0,1])
 Ndef(\x1).playN([0,1])
 
+
+//    pasar estas instancias y extraer reglas . . . .  
+
 //the
 Ndef(\x).set( \freq, 120,\freq1, 180,      \amp, 0.1, \mix, 0.01, \room, 0.001, \damp, 0.40);
 Ndef(\x1).set(\freq, 121,\freq1, 60*(4/3), \amp, 0.1, \mix, 0.5,  \room, 0.020, \damp, 0.20)

@@ -6,6 +6,10 @@ s.boot
 
 (
 ~x3intro = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/x3intro.scd").load;
+~x3main = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/x3main.scd").load;
+~x3break = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/x3break.scd").load;
+~x3end = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/x3end.scd").load;
+
 ~intro = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/intro.scd").load;
 ~main = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/main.scd").load;
 ~break = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/break.scd").load;
@@ -13,29 +17,28 @@ s.boot
 )
 
 
-~read.value(~intro)
-
+~read.value(~x3break)
 
 
 Ndef(\x3).playN([0,1])
 Ndef(\x2).play([0,1])
 
-~set.value( Ndef(\x2), ~intro, 7)
-~set.value( Ndef(\x3), ~x3intro, 0)
+~set.value( Ndef(\x2), ~main, 12)
+~set.value( Ndef(\x3), ~x3main, 2)
 
 
 Ndef(\x2).getKeysValues.do{|key| key.postln}
 
-~read.value(~end)
+~read.value(~x3break)
 
 (Tdef(\y,{
 	inf.do{
-		~set.value(Ndef(\x2), ~break, 4);
-		~set.value(Ndef(\x3), ~break, 4);
+		~set.value(Ndef(\x2), ~end, 0);
+		~set.value(Ndef(\x3), ~x3end, 0);
 	[7,3,11].choose.wait}
 }).play)
 
-
+Tdef(\y).stop
 Synth(\sinusoidals)
 Synth(\sinusoidals).set(\freq,59,\freq1,64,\f6req2,67);
 Tdef(\playhi).stop

@@ -23,18 +23,18 @@ s.boot
 Ndef(\x3).playN([0,1])
 Ndef(\x2).play([0,1])
 
-~set.value( Ndef(\x2), ~main, 12)
+~set.value( Ndef(\x2), ~intro, 0)
 ~set.value( Ndef(\x3), ~x3main, 2)
 
 
 Ndef(\x2).getKeysValues.do{|key| key.postln}
 
-~read.value(~x3break)
+~read.value(~x3intro)
 
 (Tdef(\y,{
 	inf.do{
-		~set.value(Ndef(\x2), ~end, 0);
-		~set.value(Ndef(\x3), ~x3end, 0);
+		~set.value(Ndef(\x2), ~main, 0);
+		~set.value(Ndef(\x3), ~x3main, 0);
 	[7,3,11].choose.wait}
 }).play)
 

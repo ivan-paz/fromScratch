@@ -12,8 +12,6 @@ Ndef(\x1,{
 	sig = Saw.ar([freq, freq + 1, freq1, freq1 - 1],amp) * LFNoise0.ar(5);
 	sig = FreeVerb.ar(sig, SinOsc.kr(mix), SinOsc.kr(room), SinOsc.kr(damp));
 }))
-Ndef(\x).playN([0,1])
-Ndef(\x1).playN([0,1])
 
 
 //    pasar estas instancias y extraer reglas . . . .  
@@ -47,18 +45,40 @@ Ndef(\x).set( \freq, 120*(4/3),\freq1, 180,      \amp, 0.1, \mix, 0.01, \room, 0
 Ndef(\x1).set(\freq, 120*(3/2),\freq1, 60*(4/3), \amp, 0.1, \mix, 0.01,  \room, 0.020, \damp, 0.02)
 
 
-
-
 //To explore the space
 Ndef(\x).edit
 Ndef(\x1).edit
 
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/lib.scd").load;
-("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rules.scd").load;
+~before = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/before.scd").load;
+~the = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/the.scd").load;
+~rain = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rain.scd").load;
 
-~the = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rainX.scd").load;
+Ndef(\x).playN([0,1])
+Ndef(\x1).playN([0,1])
 
-~the.do{arg x; x.do{|y| y.postln}}
+
+(Tdef(\ppplay,{
+	inf.do{
+		~set.value(Ndef(\x),  ~rain, 2);
+		7.wait;
+		~set.value(Ndef(\x1), ~rain, 2);
+		[1,3,0.5,7].choose.wait
+	}
+}).play)
+Tdef(\ppplay).stop
+Ndef(\x).stop
+
+
+
+
+
+
+
+
+
+
+
 
 
 (
@@ -103,7 +123,6 @@ Ndef(\x).set(*~mapIndices.(~rule, x));
 
 
 //
-~set.value(Ndef(\x),'A',~data);
 
 
 ~hardSave.value(~data,name)

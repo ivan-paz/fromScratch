@@ -1,5 +1,17 @@
 //Ndefs
 (
+Ndef(\x,{
+	arg freq, freq1, amp, mix, room, damp;
+	var sig;
+	sig = Saw.ar([freq, freq + 1, freq1, freq1 -1],amp);
+	sig = FreeVerb.ar(sig, SinOsc.kr(mix), SinOsc.kr(room), SinOsc.kr(damp));
+});
+Ndef(\x1,{
+	arg freq, freq1, amp, mix, room, damp;
+	var sig;
+	sig = Saw.ar([freq, freq + 1, freq1, freq1 - 1],amp) * LFNoise0.ar(5);
+	sig = FreeVerb.ar(sig, SinOsc.kr(mix), SinOsc.kr(room), SinOsc.kr(damp));
+});
 
 Ndef(\x2,{
 	arg freqx3, freq2x3, ampx3, freqx4, widthx4, freq1x4, width1x4, ampx4, freqx5, freq2x5, ampx5, freqx6, widthx6, freq1x6, width1x6, ampx6;

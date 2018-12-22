@@ -29,12 +29,12 @@ Ndef(\x2).play([0,1])
 
 Ndef(\x2).getKeysValues.do{|key| key.postln}
 
-~read.value(~x3intro)
+~read.value(~x3end)
 
 (Tdef(\y,{
 	inf.do{
-		~set.value(Ndef(\x2), ~main, 0);
-		~set.value(Ndef(\x3), ~x3main, 0);
+		~set.value(Ndef(\x2), ~end, 4);
+		~set.value(Ndef(\x3), ~x3end, 2);
 	[7,3,11].choose.wait}
 }).play)
 

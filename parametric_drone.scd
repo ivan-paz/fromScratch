@@ -16,20 +16,15 @@ Ndef(\x1).playN([0,1])
 ~read.value(~rain)
 
 
+(
+~set.value(Ndef(\x),  ~rain, 2);
+~set.value(Ndef(\x1), ~rain, 2);
+)
 
 
-(Tdef(\uno,{
-	inf.do{
-		~set.value(Ndef(\x), ~the,  0);
-		[3,0.5,1].choose.wait;
-		~set.value(Ndef(\x1), ~the,  0);
-		[7,3,1].choose.wait
-	}
-}).stop)
+Ndef(\x).stop
+Ndef(\x1).stop
 
-
-
-Ndef(\x1).set(\amp,0.0)
 
 
 

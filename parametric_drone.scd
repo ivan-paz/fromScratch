@@ -1,4 +1,5 @@
 //
+s.boot
 s.makeWindow;
 
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/ndefs.scd").load;
@@ -6,30 +7,4 @@ s.makeWindow;
 ~before = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/before.scd").load;
 ~the = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/the.scd").load;
 ~rain = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rain.scd").load;
-
-
-Ndef(\x).playN([0,1])
-Ndef(\x1).playN([0,1])
-
-~read.value(~before)
-~read.value(~the)
-~read.value(~rain)
-
-
-(
-~set.value(Ndef(\x),  ~rain, 2);
-~set.value(Ndef(\x1), ~rain, 2);
-)
-
-
-Ndef(\x).stop
-Ndef(\x1).stop
-
-
-
-
-
-
-
-
 

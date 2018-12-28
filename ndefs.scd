@@ -31,12 +31,14 @@ Ndef(\x2,{
 	
 	sigx3 + sigx4 + sigx5 + sigx6
 });
+
 Ndef(\x3,{
 	arg freq, freq2, amp;
 	var sig;
 	sig = Mix(Saw.ar([freq, freq - 1], amp) + Saw.ar([freq2, freq2 - 1], amp)) + Impulse.ar(20, amp/4);
 	sig = FreeVerb.ar(sig, 0.33, 0.5, 0.5, 1) * 3 * amp;
 });
+
 Ndef(\x4,{
 	arg freq, freq1, width, width1, amp;
 	var sig;
@@ -56,20 +58,20 @@ Ndef(\x6,{
 	sig = FreeVerb.ar(sig, 0.33, 0.5, 0.5, 1 ) * 3 * amp
 });
 SynthDef(\sinusoidals,{
-	arg freq=60, freq1=67, freq2=64,  out = 0;
+	arg freq=60, freq1=67, freq2=64;
 	var sig, sig1, sig2;
 	sig =  Saw.ar(freq.midicps, 0.2) * EnvGen.kr(Env.new([0, 0.1, 0, 0.1, 0], [15, 5, 4, 15]));
 	sig1 = Pulse.ar(freq1.midicps,0.2,0.2) * EnvGen.kr(Env.new([0, 0.1, 0.2, 0], [5, 10, 15] ));
 	sig2 = Saw.ar(freq2.midicps,0.2) * EnvGen.kr(Env.new([0,0.1,0], [20,15]));
 	sig = sig + sig1 + sig2;
-	Out.ar(  out  ,sig)
+	Out.ar([0,1],Pan2.ar(sig, 0, 1))
 }).add;
 SynthDef(\hi,{
-	arg amp,   out = 1;
+	arg amp,   out = [0,1];
 	var sig, env;
 	sig = WhiteNoise.ar(amp);
 	env =  EnvGen.kr(Env.perc(0.01, 0.01),1,doneAction:2);
-	Out.ar( out ,Pan2.ar(sig*env,FSinOsc.kr(2), 0.5));
+	Out.ar( out ,Pan2.ar( sig*env, FSinOsc.kr(2), 0.8 ));
 }).add;
 Tdef(\playhi,{
 	inf.do{

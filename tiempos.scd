@@ -24,7 +24,7 @@ Ndef(\x3).playN([0,1])
 Ndef(\x2).play([0,1])
 
 ~set.value( Ndef(\x2), ~intro, 0)
-~set.value( Ndef(\x3), ~x3main, 2)
+~set.value( Ndef(\x3), ~x3intro, 0)
 
 
 Ndef(\x2).getKeysValues.do{|key| key.postln}
@@ -33,10 +33,12 @@ Ndef(\x2).getKeysValues.do{|key| key.postln}
 
 (Tdef(\y,{
 	inf.do{
-		~set.value(Ndef(\x2), ~end, 4);
-		~set.value(Ndef(\x3), ~x3end, 2);
+		~set.value(Ndef(\x2), ~intro, 0);
+		~set.value(Ndef(\x3), ~x3intro, 0);
 	[7,3,11].choose.wait}
 }).play)
+
+
 
 Tdef(\y).stop
 Synth(\sinusoidals)

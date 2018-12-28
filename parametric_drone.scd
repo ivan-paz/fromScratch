@@ -8,3 +8,6 @@ s.makeWindow;
 ~the = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/the.scd").load;
 ~rain = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/rain.scd").load;
 
+
+
+

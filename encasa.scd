@@ -1,0 +1,106 @@
+~atractores = ("/home/ivan/documents/livecoding/presets/enCasa").load
+~atractores.do{arg x; x.postln}
+s.makeWindow
+s.boot
+[0 - 5]
+[6 - 11]
+[12 - 17]
+[18 - 26]
+(Ndef(\x7,{
+	arg freq1=96, freq2=119, amp=0.3; // 0.8
+	var sig;
+	sig = Saw.ar([freq1,freq1-1]) + Saw.ar([freq2,freq2 + 1]);
+	sig = sig *amp;
+});
+Ndef(\x8,{
+	arg freq3=178, freq4=119, amp=0.3;
+	var sig;
+	sig = Saw.ar([freq3,freq3-1]) + Saw.ar([freq4,freq4 + 1]);
+	sig = sig *amp;
+});
+Ndef(\x9,{
+	arg freq5=268, freq6=268, amp=0.3;
+	var sig;
+	sig = Saw.ar([freq5,freq5-1]) + Saw.ar([freq6,freq6 + 1]);
+	sig = sig *amp;
+});
+Ndef(\x10,{
+	arg freq7=400, freq8=400, amp=0.3;
+	var sig;
+	sig = Saw.ar([freq7,freq7-1]) + Saw.ar([freq8,freq8 + 1]);
+	sig = sig *amp;
+}))
+
+Ndef(\x7).playN([0,1]);
+
+Ndef(\x8).playN([0,1]);
+
+Ndef(\x9).playN([0,1]);
+
+Ndef(\x10).playN([0,1]);
+
+
+Ndef(\x7).stop;
+Ndef(\x8).stop;
+Ndef(\x9).stop;
+Ndef(\x10).stop;
+
+
+(
+v = Tdef(\t,{
+	100.do{
+		Ndef(\x7).set(\freq1, ~atractores[rrand(0,5)][1],\freq2,119);
+		Ndef(\x8).set(\freq3,178,\freq4, ~atractores[rrand(6,11)][2]);
+		Ndef(\x9).set(\freq5, 268, \freq6, ~atractores[rrand(12,17)][2]);
+		Ndef(\x10).set(\freq7, 400, \freq8, ~atractores[rrand(18,26)][2]);
+		'Hola ESC!'.postln;
+		[8,8,8,16].choose.wait;
+};
+	100.do{"100 times is a lot but every term is eventually met . . . ".scramble.postln}
+})
+)
+v.play
+v.pause
+//el v
+v.stop
+//
+("/home/ivan/documents/sc/esc/lastDrums.scd").load
+~set.value('snare', 0);  // to 3
+~set.value('kick',  0) //to 4
+
+
+
+
+
+
+
+/*s.meter
+(
+Pdef(\kick,
+Pbind(
+\instrument, \SOSkick,
+\dur, 0.25,
+\freq, 50,
+\mod_freq, 7,
+\mod_index, 7,
+\decay, Pkey(\dur) * 0.9,
+\beaterLvl, 0.6,
+//\amp, Pseq([0.9, 0, 0, 0,   0.0, 0, 0, 0,  0.9, 0, 0, 0.0, 0, 0, 0.9, 0 ],inf),
+\amp, Pseq([0.9, 0, 0, 0,   0.0, 0, 0, 0,  0.9, 0, 0, 0.0, 0, 0, 0, 0 ],inf),
+));
+Pdef(\snare,
+Pbind(
+\instrument, \SOSkick,
+\dur, 0.50,
+\freq, 50,
+\mod_freq, 7,
+\mod_index, 7,
+\decay, Pkey(\dur) * 1.2,
+\beaterLvl, 10,
+//\amp, Pseq([0, 0, 0, 0,   0, 0.3, 0.25, 0,  0, 0.25, 0, 0.3,  0, 0, 0, 0 ],inf),
+\amp, Pseq([0, 0, 0, 0,   0, 0.3, 0.25, 0,  0, 0.25, 0, 0.0,  0, 0, 0, 0 ],inf),
+));
+)
+Pdef(\kick).play;
+Pdef(\snare).play
+*/

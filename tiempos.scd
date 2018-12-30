@@ -4,7 +4,6 @@
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/lib.scd").load;
 ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/ndefs.scd").load;
 
-
 (
 ~x3intro = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/x3intro.scd").load;
 ~x3main = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/x3main.scd").load;
@@ -16,28 +15,6 @@
 ~break = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/break.scd").load;
 ~end = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/end.scd").load
 )
-
-
-~read.value(~break)
-
-s.boot
-Ndef(\x3).playN([0,1])
-Ndef(\x2).playN([0,1])
-
-(Tdef(\y,{
-	inf.do{
-		~set.value(Ndef(\x2), ~end, 0);
-		~set.value(Ndef(\x3), ~x3end, 0);
-	[7,5,11].choose.wait}
-}).stop)
-
-
-Synth(\sinusoidals).set(\freq, 59, \freq1,64, \freq2, 67)
-
-Tdef(\playhi).stop
-
-Ndef(\x2).stop;
-Ndef(\x3).stop;
 
 
 

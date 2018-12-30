@@ -40,11 +40,6 @@ Ndef(\x9).playN([0,1]);
 Ndef(\x10).playN([0,1]);
 
 
-Ndef(\x7).stop;
-Ndef(\x8).stop;
-Ndef(\x9).stop;
-Ndef(\x10).stop;
-
 
 (
 v = Tdef(\t,{
@@ -63,44 +58,6 @@ v.play
 v.pause
 //el v
 v.stop
-//
-("/home/ivan/documents/sc/esc/lastDrums.scd").load
-~set.value('snare', 0);  // to 3
-~set.value('kick',  0) //to 4
 
 
 
-
-
-
-
-/*s.meter
-(
-Pdef(\kick,
-Pbind(
-\instrument, \SOSkick,
-\dur, 0.25,
-\freq, 50,
-\mod_freq, 7,
-\mod_index, 7,
-\decay, Pkey(\dur) * 0.9,
-\beaterLvl, 0.6,
-//\amp, Pseq([0.9, 0, 0, 0,   0.0, 0, 0, 0,  0.9, 0, 0, 0.0, 0, 0, 0.9, 0 ],inf),
-\amp, Pseq([0.9, 0, 0, 0,   0.0, 0, 0, 0,  0.9, 0, 0, 0.0, 0, 0, 0, 0 ],inf),
-));
-Pdef(\snare,
-Pbind(
-\instrument, \SOSkick,
-\dur, 0.50,
-\freq, 50,
-\mod_freq, 7,
-\mod_index, 7,
-\decay, Pkey(\dur) * 1.2,
-\beaterLvl, 10,
-//\amp, Pseq([0, 0, 0, 0,   0, 0.3, 0.25, 0,  0, 0.25, 0, 0.3,  0, 0, 0, 0 ],inf),
-\amp, Pseq([0, 0, 0, 0,   0, 0.3, 0.25, 0,  0, 0.25, 0, 0.0,  0, 0, 0, 0 ],inf),
-));
-)
-Pdef(\kick).play;
-Pdef(\snare).play
-*/

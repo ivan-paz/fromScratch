@@ -2,10 +2,8 @@
 ~atractores.do{arg x; x.postln}
 s.makeWindow
 s.boot
-[0 - 5]
-[6 - 11]
-[12 - 17]
-[18 - 26]
+[0 - 5] [6 - 11] [12 - 17] [18 - 26]
+
 (Ndef(\x7,{
 	arg freq1=96, freq2=119, amp=0.3; // 0.8
 	var sig;
@@ -31,32 +29,29 @@ Ndef(\x10,{
 	sig = sig *amp;
 }))
 
-Ndef(\x7).playN([0,1]);
+Ndef(\x7).stop
 
-Ndef(\x8).playN([0,1]);
+Ndef(\x8).stop
 
-Ndef(\x9).playN([0,1]);
+Ndef(\x9).stop
 
-Ndef(\x10).playN([0,1]);
+Ndef(\x10).stop
 
 
-
-(
-v = Tdef(\t,{
+(v = Tdef(\t,{
 	100.do{
 		Ndef(\x7).set(\freq1, ~atractores[rrand(0,5)][1],\freq2,119);
 		Ndef(\x8).set(\freq3,178,\freq4, ~atractores[rrand(6,11)][2]);
 		Ndef(\x9).set(\freq5, 268, \freq6, ~atractores[rrand(12,17)][2]);
 		Ndef(\x10).set(\freq7, 400, \freq8, ~atractores[rrand(18,26)][2]);
-		'Hola ESC!'.postln;
+		2019.do{"muito obrigadio".scramble.postln};
 		[8,8,8,16].choose.wait;
 };
 	100.do{"100 times is a lot but every term is eventually met . . . ".scramble.postln}
-})
-)
+}))
+
 v.play
 v.pause
-//el v
 v.stop
 
 

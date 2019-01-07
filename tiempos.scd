@@ -15,18 +15,18 @@
 ~break = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/break.scd").load;
 ~end = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/end.scd").load
 )
-Ndef(\x3).playN([0,1])
-~read.value(~main)
-(
-	Tdef(\y,{
-		inf.do{
 
-~set.value(Ndef(\x2),~break,0);
-~set.value(Ndef(\x3),~x3break,0);
-[22,11].choose.wait
-}}).play)
+(
+Tdef(\y,{
+	inf.do{
+		~set.value(Ndef(\x2),~end, 0);
+		~set.value(Ndef(\x3),~x3end,0);
+[11].choose.wait
+}}).stop)
 )
-Tdef(\hi).play
-Ndef(\x2).playN([0,1])
-Ndef(\x2).playN([0,1])
+
+Synth(\sinusoidals)
+Tdef(\playhi).stop
+Ndef(\x2).stop
+Ndef(\x3).stop
 

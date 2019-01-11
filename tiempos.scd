@@ -16,12 +16,15 @@
 ~end = ("/home/ivan/documents/livecoding/first_draft_livecoding_rio/fromScratch/end.scd").load
 )
 
+
+
+
 (
 Tdef(\y,{
 	inf.do{
 		~set.value(Ndef(\x2),~end, 0);
 		~set.value(Ndef(\x3),~x3end,0);
-[11].choose.wait
+[11,7,5].choose.wait
 }}).stop)
 )
 

@@ -10,8 +10,3 @@ s.makeWindow;
 
 
 
-
-
-
-
-

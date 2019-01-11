@@ -29,8 +29,7 @@ Ndef(\x10,{
 	sig = sig *amp;
 }))
 
-Ndef(\x7).stop
-
+Ndef(\x7).playN([0,1])
 Ndef(\x8).stop
 
 Ndef(\x9).stop

@@ -17,14 +17,17 @@
 )
 
 
-
-
+Ndef(\x2).playN([0,1])
+Ndef(\x3).playN([0,1])
+(~read.value(~end);
+~read.value(~x3end);
+)
 (
 Tdef(\y,{
 	inf.do{
 		~set.value(Ndef(\x2),~end, 0);
 		~set.value(Ndef(\x3),~x3end,0);
-[11,7,5].choose.wait
+		[22,11].choose.wait
 }}).stop)
 )
 

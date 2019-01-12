@@ -19,20 +19,20 @@
 
 Ndef(\x2).playN([0,1])
 Ndef(\x3).playN([0,1])
-(~read.value(~end);
-~read.value(~x3end);
+(~read.value(~intro);
+~read.value(~x3main);
 )
 (
 Tdef(\y,{
 	inf.do{
-		~set.value(Ndef(\x2),~end, 0);
-		~set.value(Ndef(\x3),~x3end,0);
-		[22,11].choose.wait
-}}).stop)
+		~set.value(Ndef(\x2),~intro,7);
+		~set.value(Ndef(\x3),~x3intro,0);
+		[5,7,3].choose.wait
+}}).play)
 )
 
 Synth(\sinusoidals)
 Tdef(\playhi).stop
+Ndef(\x2).set(\amp,0.1)
 Ndef(\x2).stop
-Ndef(\x3).stop
 
